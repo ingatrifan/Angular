@@ -1,0 +1,20 @@
+<form (submit)="loginUser($event)">
+	<div class="">
+		<label class="lab">Nickname</label>
+		<input class="inp" type="text" placeholder="Piticul cel Bun" [(ngModel)]='playerUSER.Nickname' name= "first">
+	  </div>
+	  <!--<div class="photo">
+		<label class="lab" for="file">Choose a photo</label>
+		<input  type="file" name="PlayerAdmin">
+	  </div>
+	-->
+	<div>
+		<label class="label">Introdu codul</label>
+		<input type="text" class="cod">
+  </div>
+  <div class="but" >
+		<input  type="submit" value="submit" class="button">
+	</div>
+</form>
+<img class="antman" src="/assets/img/antman.png">
+

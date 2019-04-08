@@ -1,21 +1,14 @@
-input[type=text] {
-    padding:5px; 
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
 
-input[type=text]:focus {
-    border-color:#333;
-}
+
 form{
-    height: 500px;
-    display: flex;
+    padding-top: 10% ;
+    margin:auto;
     align-items: center;
     justify-content: center;
 
 }
 input[type=submit] {
+
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -23,7 +16,16 @@ input[type=submit] {
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-    display: inline-block;
     vertical-align: -webkit-baseline-middle;
 
+}
+.ironman {
+    float:left;
+    height: 400px;
+}
+.thor{
+    display: flex;
+    float: right;
+    height: 380px;    
+   
 }

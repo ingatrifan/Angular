@@ -1,0 +1,60 @@
+
+form{
+    padding-top: 100px;
+    margin: 2% auto;
+    float:left;
+    padding-left:500px;
+    
+}
+.lab{
+    display: block;
+    font-size: 30px;
+    font-family: 'Marvel', sans-serif;
+    color: black;
+}
+.inp{
+    display: block;
+    width: 200px;
+    height: 35px;
+    border-radius: 8px;
+    border: 2px solid grey;
+    font-size: 25px;
+    font-style: oblique;
+    
+}
+.but{
+    margin-top:10px;
+    margin-left:50px;
+}
+.label{
+    padding-top: 50px;
+    display: block;
+    font-size: 40px;
+    font-family: 'Marvel', sans-serif;
+}
+.cod {
+    display: block;
+    width: 235px;
+    height: 50px;
+    border: 2px solid black;
+    font-size: 40px;
+    font-style: oblique;
+    text-align: center;
+
+}
+.button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: 'Marvel', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.antman{
+    height: 300px;
+    float: right;
+}

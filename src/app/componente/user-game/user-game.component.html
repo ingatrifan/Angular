@@ -1,0 +1,25 @@
+<div class="admin">
+  <p class="name">{{PlayerAdmin.Nickname}} </p>
+  <p class="scor"> Scorul : {{ scorA}}</p>
+
+</div>
+
+<div class= "user">
+  <p class="name">{{PlayerUser.Nickname}}</p>
+  <p class="scor">Scorul : {{scorU}}</p>
+</div>
+<div>
+ <h1> {{intrebari[index].intrebare}}</h1>
+<div class="intreb">
+  <form >
+  <ul >
+      <li  *ngFor="let rasp of intrebari[index].raspunsuri; let j=index">
+      <input class="button" type="submit" value="{{ rasp.raspuns }}" (click)=press(j)>
+  </li> 
+  </ul>
+</form>
+</div>
+  
+  
+
+</div>

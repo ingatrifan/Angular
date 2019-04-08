@@ -1,0 +1,12 @@
+ <div class="finally">
+  <div class="players"> 
+    <div class="admin">
+      <p class="name">{{PlayerAdmin.Nickname}}    <b> vs </b>    {{PlayerUser.Nickname}}</p>
+   </div>
+  </div>
+   <div class="winner" >
+    <h1 class="nuegal" *ngIf = "scorA > scorU "> Câștigătorul : {{PlayerAdmin.Nickname}}</h1>
+    <h1 class="nuegal" *ngIf = "scorU > scorA"> Câștigătorul : {{PlayerUser.Nickname}}</h1>
+    <h1 class="egal" *ngIf = "scorA == scorU">Egalitate</h1>
+  </div>
+</div>
