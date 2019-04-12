@@ -13,7 +13,7 @@ export const Intrebari : Intrebare [] = [
     },
     {
         id:3,
-        intrebare : "In ce an a aparut Avengers ?",
+        intrebare : "In ce an a aparut the Avengers ?",
         raspunsuri:[
             {raspuns: "2008"},
             {raspuns: "2010"},
@@ -24,7 +24,7 @@ export const Intrebari : Intrebare [] = [
     },
     {
         id:4,
-        intrebare : "Cum se numeste personajul interpretat de Scarlet Johanson?",
+        intrebare : "Cum se numeste personajul interpretat de Scarlett Johansson?",
         raspunsuri: [
             {raspuns: "Peggy Carter"},
             {raspuns: "Scarlet Witch"},
