@@ -15,8 +15,12 @@ export class FirstpageComponent implements OnInit {
   }
   userPress(e){
     e.preventDefault();
-
     this.router.navigate(['\login']);
+    return false;
+  }
+  infoPress(e){
+    e.preventDefault();
+    this.router.navigate(['\info']);
     return false;
   }
 

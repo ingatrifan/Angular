@@ -8,6 +8,7 @@ import { LoginformComponent } from './componente/loginform/loginform.component';
 import { UserDashboardComponent } from './componente/user-dashboard/user-dashboard.component';
 import { UserGameComponent } from './componente/user-game/user-game.component';
 import { WinnerComponent } from './componente/winner/winner.component';
+import { InfoComponent } from './componente/info/info.component';
 
 //const routes: Routes = [];
 
@@ -39,6 +40,10 @@ const appRoutes:Routes = [
   {
     path:'winner',
     component:WinnerComponent
+  },
+  {
+    path :'info',
+    component:InfoComponent
   }
 ]
 

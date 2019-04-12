@@ -35,4 +35,15 @@
     margin: 4px 2px;
     cursor: pointer;
 }
-
+.winter{
+    position: absolute;
+    left:60%;
+    top:10%;
+    width:400px;
+}
+.captain{
+    position: absolute;
+    left:0%;
+    top:10%;
+    width:400px;
+}

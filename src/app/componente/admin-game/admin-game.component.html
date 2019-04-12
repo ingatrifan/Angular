@@ -11,23 +11,25 @@
 
 -->
 <div class="admin">
-    <p class="name">{{PlayerAdmin.Nickname}} </p>
-    <p class="scor"> Scorul : {{ scorA}}</p>
+    <p class="name">{{admin.Name}} </p>
+    <p class="scor">Scorul : {{admin.Scor}}</p>
 
 </div>
 
 <div class= "user">
-    <p class="name">{{PlayerUser.Nickname}}</p>
-    <p class="scor">Scorul : {{scorU}}</p>
+    <p class="name">{{user.name}}</p>
+    <p class="scor">Scorul : {{user.Scor}}</p>
 </div>
     
 <div >
-   <h1> {{intrebari[_index].intrebare}}</h1>
- <div class="intreb">
+   <h1> {{intrebari[admin.Index].intrebare}}</h1>
+   <div *ngIf="admin.OK==0"><app-raspuns></app-raspuns></div>
+ <div class="intreb" *ngIf="admin.OK!=0  && user.OK !=0">
     <form >
     <ul >
-        <li  *ngFor="let rasp of intrebari[_index].raspunsuri; let j=index">
-        <input class="button" type="submit" value="{{ rasp.raspuns }}" (click)=press(j)>
+        <li  *ngFor="let rasp of intrebari[admin.Index].raspunsuri; let j=index">
+        <input *ngIf="j == user.OK-1" class="button" type="submit" value="{{user.Intreb}} " (click)=press(j)>
+        <input *ngIf="j != user.OK-1" class="button" type="submit" value="{{ rasp.raspuns}} " (click)=press(j)>
     </li> 
     </ul>
     </form>

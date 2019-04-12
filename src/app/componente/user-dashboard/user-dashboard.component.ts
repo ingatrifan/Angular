@@ -27,7 +27,8 @@ export class UserDashboardComponent implements OnInit {
     this.service.SetPlayerUser(this.playerUSER);
     this.playerUSER = {Nickname :"" , HaveaPhoto : false , Photo : null}
     
-    var cod= e.target.elements[2].value;
+    var cod= e.target.elements[1].value;
+    console.log(cod);
     if (cod == '123456'){
       this.router.navigate(['/user-game']);
     }

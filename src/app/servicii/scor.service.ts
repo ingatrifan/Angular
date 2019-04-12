@@ -1,24 +1,40 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ScorService {
 
-  private scorA = new BehaviorSubject<number>(0);
-  private scorU = new BehaviorSubject<number>(0);
-  private timer = new BehaviorSubject<number>(10);
-  castScorA = this.scorA.asObservable();
-  castScorU = this.scorU.asObservable();
-  castTime = this.timer.asObservable();
-  constructor() { }
+  constructor(private af:AngularFireDatabase) { }
+  
   public setScorAdmin(scor : number){
-    this.scorA.next(scor);
+    this.af.object('/admin').update( {Scor:scor});
   }
   public setScorUser(scor:number){
-    this.scorU.next(scor);
+    this.af.object('/user').update( {Scor:scor});
   }
-  public setTimemm(time:number){
-    this.timer.next(time);
+
+  public SetIndexAdmin( Index: number){
+    this.af.object('/admin').update( {Index:Index});
+    
   }
+  public SetIndexUser( Index : number){
+    this.af.object('/user').update( {Index: Index});
+}
+  public SetIntrebAdmin(x : number){
+    this.af.object('/admin').update( {OK:0,Intreb:"Altceva"});
+  }
+  public SetIntrebUser(x : number){
+    this.af.object('/user').update( {OK:0,Intreb:"Altceva"});
+  }
+  public SetPressAdmin(x : number){
+    this.af.object('/admin').update( {Press:x});
+  }
+  public SetPressUser(x : number){
+    this.af.object('/user').update( {Press:x});
+  }
+
+  
+
 }

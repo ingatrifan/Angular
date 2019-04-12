@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayersService } from '../../servicii/players.service';
-import { Player } from '../../modele/Players';
-import { ScorService } from 'src/app/servicii/scor.service';
+import { ScorService } from '../../servicii/scor.service';
 import { Intrebari } from '../../modele/Intrebari'
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-user-game',
@@ -12,33 +11,53 @@ import { Router } from '@angular/router';
 })
 export class UserGameComponent implements OnInit {
 
-  public PlayerAdmin : Player ;
-  public PlayerUser : Player ;
-  public scorA : number;
-  public scorU : number;
-  public index=0;
+  public _index=0;
   public time=10;
   intrebari = Intrebari;
-  constructor(private _playersserv : PlayersService, private _scor:ScorService ,private router: Router) { }  
+  admin:any;
+  user:any;
+  constructor( private _scor:ScorService , 
+    private router : Router,private af:AngularFireDatabase ) { 
+  
+    }  
+  
   ngOnInit() {
-    this._playersserv.castA.subscribe(PlayerAdmin =>this.PlayerAdmin = PlayerAdmin);
-    this._playersserv.castS.subscribe(PlayerUser =>this.PlayerUser = PlayerUser);
-    this._scor.castScorA.subscribe(scorA => this.scorA = scorA);
-    this._scor.castScorU.subscribe(scorU =>this.scorU = scorU);
-    this._scor.castTime.subscribe(time=>this.time=time);
+  
+    this.af.object('/admin').valueChanges().subscribe(admin =>{
+      this.admin=admin;
+    });
+    this.af.object('/user').valueChanges().subscribe(user =>{
+      this.user=user;
+    });
   }
   press(i){
-    //e.preventDefault();
+
     console.log(i);
-    
-    if (i+1 == this.intrebari[this.index].id ){
-      if (this.index>14) this._scor.setScorUser(this.scorU+30); else
-      if (this.index>9) this._scor.setScorUser(this.scorU+20); else
-      this._scor.setScorUser(this.scorU+10);
+    this._scor.SetPressUser(1);
+    console.log(this.user.Index);
+    if (i+1 == this.intrebari[this.user.Index].id ){
+      if (this.user.Index>14) this._scor.setScorUser(this.user.Scor+30); else
+      if (this.user.Index>9) this._scor.setScorUser(this.user.Scor+20); else
+      this._scor.setScorUser(this.user.Scor+10);
     }
-    this.index++;
-    if (this.index ==20) this.router.navigate(['/winner']);
+    if (this.admin.OK == i + 1 ){
+      if (this.user.Index>14) this._scor.setScorAdmin(this.admin.Scor+15); else
+      if (this.user.Index>9) this._scor.setScorAdmin(this.admin.Scor+10); else
+      this._scor.setScorAdmin(this.admin.Scor+5);
+    }
+    if (this.user.Index+1 ==20 )
+      this.router.navigate(['/winner']);
+      
+    if (this.admin.Press==1)
+    {
+      this._scor.SetIndexUser(this.user.Index+1);
+      this._scor.SetIntrebUser(0);
+      this._scor.SetPressUser(0);
+      this._scor.SetIndexAdmin(this.user.Index+1);
+      this._scor.SetIntrebAdmin(0);
+      this._scor.SetPressAdmin(0);
+    } else window.alert("Oponentul inca nu a ales");
+  
   }
   
-
 }

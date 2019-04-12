@@ -1,45 +1,29 @@
 
 import { Injectable } from '@angular/core';
 import { Player } from '../modele/Players'
-import { BehaviorSubject } from 'rxjs'
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayersService {
-  
-  private PlayerAdmin = new BehaviorSubject< Player >( 
-    {
-      Nickname:"PiticulCelRau",
-      HaveaPhoto:false,
-      Photo:null
-    }
-  )
-  private PlayerUser =new BehaviorSubject< Player> ( 
-    {
-      Nickname:'PiticulCelBun',
-      HaveaPhoto:false,
-      Photo:null
-    }
-  )
-  private index : number;
-   
-  castA = this.PlayerAdmin.asObservable();
-  castS = this.PlayerUser.asObservable();
-  constructor() { }
  
+  user:any;
+  admin:any;
+  
+ 
+  constructor(private af:AngularFireDatabase) { 
+  }
+
   public SetPlayerAdmin( player : Player) {
-    this.PlayerAdmin.next(player);
+    this.af.object('/admin').update( {Name:player.Nickname || "Piticul cel Rau" ,Scor : 0 , Index : 0,Intreb:"Altceva",OK:0});
+    this.af.object('/user').update( {name:"Piticul cel Bun" , Scor : 0 , Index : 0,Intreb:"Altceva",OK:0 });
+
   }
 
   public SetPlayerUser( player : Player) {
-    this.PlayerUser.next(player);
-  }
-  public SetIndex( Index: number){
-    this.index = Index;
-  }
-  public GetIndex(Index : number){
-    return this.index;
+    this.af.object('/user').update( {name:player.Nickname,OK:0});
   }
 
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayersService } from '../../servicii/players.service';
-import { Player } from '../../modele/Players';
-import { ScorService } from 'src/app/servicii/scor.service';
+
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -13,18 +12,17 @@ import { Router } from '@angular/router';
 })
 export class WinnerComponent implements OnInit {
 
-  public PlayerAdmin : Player ;
-  public PlayerUser : Player ;
-  public scorA : number;
-  public scorU : number;
-  constructor(private _playersserv : PlayersService, private _scor:ScorService , 
-    private router : Router) { }
+  admin:any;
+  user:any;
+  constructor( private router : Router, private af:AngularFireDatabase) { }
 
   ngOnInit() {
-    this._playersserv.castA.subscribe(PlayerAdmin =>this.PlayerAdmin = PlayerAdmin);
-    this._playersserv.castS.subscribe(PlayerUser =>this.PlayerUser = PlayerUser);
-    this._scor.castScorA.subscribe(scorA => this.scorA = scorA);
-    this._scor.castScorU.subscribe(scorU =>this.scorU = scorU);
+    this.af.object('/admin').valueChanges().subscribe(admin =>{
+      this.admin=admin;
+    });
+    this.af.object('/user').valueChanges().subscribe(user =>{
+      this.user=user;
+    });
   }
   
 
