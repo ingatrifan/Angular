@@ -5,10 +5,10 @@ export const Intrebari : Intrebare [] = [
         id:1, 
         intrebare : "Cine interpreteaza personajul Hulk?",
         raspunsuri: [
-            {raspuns : "Mark Ruffolo"},
+            {raspuns : "Mark Ruffalo"},
             {raspuns : "Jonny Depp"},
-            {raspuns: "Altul"},
-            {raspuns : "Mama"}
+            {raspuns: "Martin Ruffalo"},
+            {raspuns : "Kevin Feige"}
         ]
     },
     {
